@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "validate": "node src/cli.js validate",
-    "build": "node src/cli.js build",
-    "present": "node src/cli.js present"
+    "build": "node src/cli.js build"
   },
   "engines": {
     "node": ">=18"

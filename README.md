@@ -186,5 +186,4 @@ No dev server, incremental build logic, deployment, plugin system, or optimizati
 npm install
 npm run validate
 npm run build
-npm run present
 ```

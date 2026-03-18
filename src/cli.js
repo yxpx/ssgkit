@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import path from "node:path";
-import { readFile } from "node:fs/promises";
 import { buildSite, readAndValidate } from "./build/pipeline.js";
 
 function printValidationErrors(errors) {
@@ -52,16 +51,6 @@ async function runBuild(contentDir, templatesRoot, outputDir) {
   }
 }
 
-async function runPresent(outputDir) {
-  const sample = path.join(outputDir, "index.html");
-  const html = await readFile(sample, "utf8");
-  const compact = html.replace(/\s+/g, " ").trim();
-
-  console.log("WEEKLY DEMO SNAPSHOT");
-  console.log(`Sample file: ${path.relative(process.cwd(), sample).replaceAll("\\", "/")}`);
-  console.log(`Preview: ${compact.slice(0, 220)}...`);
-}
-
 async function main() {
   const command = process.argv[2] || "build";
   const contentDir = path.resolve("content");
@@ -78,12 +67,7 @@ async function main() {
     return;
   }
 
-  if (command === "present") {
-    await runPresent(outputDir);
-    return;
-  }
-
-  console.log("Usage: node src/cli.js <validate|build|present>");
+  console.log("Usage: node src/cli.js <validate|build>");
   process.exitCode = 1;
 }
 
