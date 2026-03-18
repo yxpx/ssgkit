@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{page.meta.title}} | {{site.title}}</title>
+    <style>
+      body { font-family: Segoe UI, sans-serif; max-width: 900px; margin: 0 auto; padding: 24px; line-height: 1.6; }
+      header, footer { color: #444; }
+      .muted { color: #666; font-size: 0.95rem; }
+      article { margin-top: 20px; }
+      .project-list { padding-left: 18px; }
+      code { background: #f1f1f1; padding: 1px 4px; border-radius: 4px; }
+      pre { background: #f8f8f8; border: 1px solid #e6e6e6; padding: 12px; overflow: auto; }
+    </style>
+  </head>
+  <body>
+    {{> header }}
+
+    <article>
+      {{{content}}}
+    </article>
+
+    {{#if collections.projects}}
+      <section>
+        <h2>Projects</h2>
+        <ul class="project-list">
+          {{#each collections.projects}}
+            <li><a href="/projects/{{slug}}.html">{{meta.title}}</a></li>
+          {{/each}}
+        </ul>
+      </section>
+    {{/if}}
+
+    {{> footer }}
+  </body>
+</html>

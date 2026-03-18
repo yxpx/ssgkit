@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{page.meta.title}} | Project | {{site.title}}</title>
+    <style>
+      body { font-family: Segoe UI, sans-serif; max-width: 860px; margin: 0 auto; padding: 24px; line-height: 1.6; }
+      .meta { color: #666; font-size: 0.95rem; margin-bottom: 18px; }
+      pre { background: #f8f8f8; border: 1px solid #e6e6e6; padding: 12px; overflow: auto; }
+      code { background: #f1f1f1; padding: 1px 4px; border-radius: 4px; }
+    </style>
+  </head>
+  <body>
+    {{> header }}
+    <h1>{{page.meta.title}}</h1>
+    <div class="meta">
+      {{#if page.meta.author}}Author: {{page.meta.author}} | {{/if}}
+      {{#if page.meta.date}}Date: {{page.meta.date}}{{/if}}
+    </div>
+    <article>
+      {{{content}}}
+    </article>
+    <p><a href="/index.html">Back to home</a></p>
+    {{> footer }}
+  </body>
+</html>

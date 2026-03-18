@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{page.meta.title}} | {{site.title}}</title>
+    <style>
+      body { font-family: Segoe UI, sans-serif; max-width: 840px; margin: 0 auto; padding: 24px; line-height: 1.6; }
+      pre { background: #f8f8f8; border: 1px solid #e6e6e6; padding: 12px; overflow: auto; }
+      code { background: #f1f1f1; padding: 1px 4px; border-radius: 4px; }
+    </style>
+  </head>
+  <body>
+    {{> header }}
+    <article>
+      {{{content}}}
+    </article>
+    {{> footer }}
+  </body>
+</html>
