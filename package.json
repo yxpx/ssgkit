@@ -6,7 +6,10 @@
   "type": "module",
   "scripts": {
     "validate": "node src/cli.js validate",
-    "build": "node src/cli.js build"
+    "build": "node src/cli.js build",
+    "gui:dev": "npm --prefix gui run dev",
+    "gui:build": "npm --prefix gui run build",
+    "gui:start": "npm --prefix gui run start"
   },
   "engines": {
     "node": ">=18"
@@ -16,7 +19,10 @@
     "ajv-formats": "^3.0.1",
     "gray-matter": "^4.0.3",
     "handlebars": "^4.7.8",
+    "highlight.js": "^11.11.1",
     "markdown-it": "^14.1.0",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-footnote": "^4.0.0",
     "sanitize-html": "^2.17.0"
   }
 }
