@@ -1,0 +1,103 @@
+<aside class="site-sidebar" aria-label="Profile details">
+  {{#if site.profile.department}}
+    <section>
+      <h2 class="section-label affiliation">Affiliation</h2>
+      <div class="sidebar-item">
+        <span class="sidebar-key">Department</span>
+        <span class="sidebar-value">{{site.profile.department}}</span>
+      </div>
+      {{#if site.profile.institution}}
+        <div class="sidebar-item">
+          <span class="sidebar-key">Institution</span>
+          <span class="sidebar-value">{{site.profile.institution}}</span>
+        </div>
+      {{/if}}
+    </section>
+  {{else}}
+    {{#if site.profile.institution}}
+      <section>
+        <h2 class="section-label affiliation">Affiliation</h2>
+        <div class="sidebar-item">
+          <span class="sidebar-key">Institution</span>
+          <span class="sidebar-value">{{site.profile.institution}}</span>
+        </div>
+      </section>
+    {{/if}}
+  {{/if}}
+
+  {{#if site.profile.email}}
+    <section>
+      <h2 class="section-label contact">Contact</h2>
+      <div class="sidebar-item"><span class="sidebar-key">Email</span><span class="sidebar-value">{{site.profile.email}}</span></div>
+      {{#if site.profile.office}}
+        <div class="sidebar-item"><span class="sidebar-key">Office</span><span class="sidebar-value">{{site.profile.office}}</span></div>
+      {{/if}}
+      {{#if site.profile.location}}
+        <div class="sidebar-item"><span class="sidebar-key">Location</span><span class="sidebar-value">{{site.profile.location}}</span></div>
+      {{/if}}
+    </section>
+  {{else}}
+    {{#if site.profile.office}}
+      <section>
+        <h2 class="section-label contact">Contact</h2>
+        <div class="sidebar-item"><span class="sidebar-key">Office</span><span class="sidebar-value">{{site.profile.office}}</span></div>
+        {{#if site.profile.location}}
+          <div class="sidebar-item"><span class="sidebar-key">Location</span><span class="sidebar-value">{{site.profile.location}}</span></div>
+        {{/if}}
+      </section>
+    {{else}}
+      {{#if site.profile.location}}
+        <section>
+          <h2 class="section-label contact">Contact</h2>
+          <div class="sidebar-item"><span class="sidebar-key">Location</span><span class="sidebar-value">{{site.profile.location}}</span></div>
+        </section>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+
+  {{#if site.profile.scholarUrl}}
+    <section>
+      <h2 class="section-label links">Links</h2>
+      <div class="sidebar-item"><span class="sidebar-key">Scholar</span><a href="{{site.profile.scholarUrl}}">Google Scholar</a></div>
+      {{#if site.profile.githubUrl}}
+        <div class="sidebar-item"><span class="sidebar-key">GitHub</span><a href="{{site.profile.githubUrl}}">Profile</a></div>
+      {{/if}}
+      {{#if site.profile.linkedinUrl}}
+        <div class="sidebar-item"><span class="sidebar-key">LinkedIn</span><a href="{{site.profile.linkedinUrl}}">Profile</a></div>
+      {{/if}}
+      {{#if site.profile.cvUrl}}
+        <div class="sidebar-item"><span class="sidebar-key">CV</span><a href="{{site.profile.cvUrl}}">Download</a></div>
+      {{/if}}
+    </section>
+  {{else}}
+    {{#if site.profile.githubUrl}}
+      <section>
+        <h2 class="section-label links">Links</h2>
+        <div class="sidebar-item"><span class="sidebar-key">GitHub</span><a href="{{site.profile.githubUrl}}">Profile</a></div>
+        {{#if site.profile.linkedinUrl}}
+          <div class="sidebar-item"><span class="sidebar-key">LinkedIn</span><a href="{{site.profile.linkedinUrl}}">Profile</a></div>
+        {{/if}}
+        {{#if site.profile.cvUrl}}
+          <div class="sidebar-item"><span class="sidebar-key">CV</span><a href="{{site.profile.cvUrl}}">Download</a></div>
+        {{/if}}
+      </section>
+    {{else}}
+      {{#if site.profile.linkedinUrl}}
+        <section>
+          <h2 class="section-label links">Links</h2>
+          <div class="sidebar-item"><span class="sidebar-key">LinkedIn</span><a href="{{site.profile.linkedinUrl}}">Profile</a></div>
+          {{#if site.profile.cvUrl}}
+            <div class="sidebar-item"><span class="sidebar-key">CV</span><a href="{{site.profile.cvUrl}}">Download</a></div>
+          {{/if}}
+        </section>
+      {{else}}
+        {{#if site.profile.cvUrl}}
+          <section>
+            <h2 class="section-label links">Links</h2>
+            <div class="sidebar-item"><span class="sidebar-key">CV</span><a href="{{site.profile.cvUrl}}">Download</a></div>
+          </section>
+        {{/if}}
+      {{/if}}
+    {{/if}}
+  {{/if}}
+</aside>
