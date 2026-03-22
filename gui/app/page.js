@@ -552,10 +552,6 @@ export default function DashboardPage() {
             </button>
           ))}
         </nav>
-
-        <div className="sidebar-footer">
-          <div className="sidebar-avatar">{getInitials(form.siteName)}</div>
-        </div>
       </aside>
 
       <form onSubmit={onGenerate} className="editor">

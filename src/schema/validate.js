@@ -1,12 +1,9 @@
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
+import { createRequire } from "node:module";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const schemaPath = path.join(__dirname, "content-schema.json");
-const schema = JSON.parse(fs.readFileSync(schemaPath, "utf8"));
+const require = createRequire(import.meta.url);
+const schema = require("./content-schema.json");
 
 const ajv = new Ajv2020({ allErrors: true, strict: false });
 addFormats(ajv);
