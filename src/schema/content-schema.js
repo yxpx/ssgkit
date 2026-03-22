@@ -1,0 +1,42 @@
+const contentSchema = {
+  $schema: "https://json-schema.org/draft/2020-12/schema",
+  $id: "https://ssgkit.local/content-schema.json",
+  title: "Portfolio Content Frontmatter",
+  type: "object",
+  additionalProperties: false,
+  required: ["title", "layout"],
+  properties: {
+    title: {
+      type: "string",
+      minLength: 1
+    },
+    layout: {
+      type: "string",
+      enum: ["main", "project", "page"]
+    },
+    date: {
+      type: "string",
+      format: "date"
+    },
+    author: {
+      type: "string"
+    },
+    tags: {
+      type: "array",
+      items: {
+        type: "string"
+      }
+    },
+    summary: {
+      type: "string"
+    },
+    thumbnail: {
+      type: "string"
+    },
+    draft: {
+      type: "boolean"
+    }
+  }
+};
+
+export default contentSchema;

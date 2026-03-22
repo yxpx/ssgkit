@@ -1,9 +1,6 @@
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
-import { createRequire } from "node:module";
-
-const require = createRequire(import.meta.url);
-const schema = require("./content-schema.json");
+import schema from "./content-schema.js";
 
 const ajv = new Ajv2020({ allErrors: true, strict: false });
 addFormats(ajv);
