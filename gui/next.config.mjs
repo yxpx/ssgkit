@@ -17,6 +17,10 @@ const sharedRuntimeDeps = [
 
 const nextConfig = {
   outputFileTracingRoot: path.join(__dirname, ".."),
+  outputFileTracingIncludes: {
+    "/api/generate": ["../templates/**/*", "../src/**/*"],
+    "/api/generate/route": ["../templates/**/*", "../src/**/*"]
+  },
   experimental: {
     externalDir: true
   },

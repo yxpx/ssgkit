@@ -1,6 +1,7 @@
 import path from "node:path";
 import os from "node:os";
-import { mkdtemp, readFile, readdir, rm } from "node:fs/promises";
+import { access, mkdtemp, readFile, readdir, rm } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
 import JSZip from "jszip";
 
 import { validateFrontmatter } from "../../../../src/schema/validate.js";
@@ -9,6 +10,31 @@ import { renderSite } from "../../../../src/render/renderer.js";
 import { slugify } from "../../../../src/utils/slugify.js";
 
 export const runtime = "nodejs";
+
+async function resolveTemplatesRoot() {
+  const routeDir = path.dirname(fileURLToPath(import.meta.url));
+  const candidates = [
+    process.env.SSGKIT_TEMPLATES_ROOT,
+    path.resolve(process.cwd(), "templates"),
+    path.resolve(process.cwd(), "..", "templates"),
+    path.resolve(routeDir, "../../../../templates"),
+    path.resolve(routeDir, "../../../../../templates")
+  ].filter(Boolean);
+
+  for (const candidate of candidates) {
+    try {
+      await access(path.join(candidate, "layouts"));
+      await access(path.join(candidate, "partials"));
+      return candidate;
+    } catch {
+      // Try next candidate.
+    }
+  }
+
+  throw new Error(
+    `Templates directory not found. cwd=${process.cwd()} tried=${candidates.join(",")}`
+  );
+}
 
 function toList(value) {
   return String(value || "")
@@ -373,8 +399,7 @@ export async function POST(request) {
   }));
   const collections = groupCollections(renderedPages);
 
-  const rootDir = path.resolve(process.cwd(), "..");
-  const templatesRoot = path.join(rootDir, "templates");
+  const templatesRoot = await resolveTemplatesRoot();
   const tempDir = await mkdtemp(path.join(os.tmpdir(), "ssgkit-gui-"));
   const outputDir = path.join(tempDir, "site");
 
